@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies_app/core/routes/route_generator.dart';
-import 'package:movies_app/core/routes/routes.dart';
+
+import 'home.dart';
+
 void main() {
-  runApp(const MyApp());
+  runApp(MoviesApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MoviesApp extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(430, 932),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_, __) => const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.home,
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        HomeScreen.routeName: (_) => HomeScreen(),
+      },
+      initialRoute: HomeScreen.routeName,
     );
   }
+
 }
