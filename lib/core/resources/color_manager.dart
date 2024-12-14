@@ -15,5 +15,5 @@ class ColorManager {
   static const Color lightGrey = Color(0xffC6C6C6);
   static const Color descText = Color(0xffCBCBCB);
   static const Color cardBackground =Color(0xFF343534);
-
+  static const Color appBarBackground =Color(0xFF1D1E1D);
 }
