@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
@@ -19,6 +21,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, __) => MaterialApp(
+        scrollBehavior: const MaterialScrollBehavior()
+            .copyWith(dragDevices: {PointerDeviceKind.mouse}),
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           appBarTheme: AppBarTheme(color: ColorManager.appBarBackground),

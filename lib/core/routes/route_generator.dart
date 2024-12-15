@@ -2,7 +2,8 @@ import 'package:movies_app/core/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/features/browse/browse_screen.dart';
 import 'package:movies_app/features/home_screen/home_screen.dart';
-import 'package:movies_app/features/movie_details/presentation/movie_details_screen.dart';
+import 'package:movies_app/features/movie_details/presentation/view/movie_details_screen.dart';
+
 import 'package:movies_app/features/search/search_screen.dart';
 import 'package:movies_app/features/watch_list/watch_list_screen.dart';
 
