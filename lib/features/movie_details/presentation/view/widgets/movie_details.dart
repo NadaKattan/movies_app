@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
+import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/core/widgets/loading_indicator.dart';
 import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
@@ -14,6 +15,7 @@ class MovieDetails extends StatelessWidget {
   final movieDetailsOverview;
   final movieDetailsVote;
   final MoviesDetailsResponse moviesDetails;
+
   @override
   Widget build(BuildContext context) {
     return Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -27,11 +29,17 @@ class MovieDetails extends StatelessWidget {
       //   width: 120,
       //   // fit: BoxFit.cover,
       // ),
-      Image.network(
-        moviesDetails.posterPath != null
-            ? "https://image.tmdb.org/t/p/w500/${moviesDetails.posterPath}"
-            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s",
-        width: 120,
+      Stack(
+        children: [
+          // Icon(Icons.add),
+          Image.network(
+            moviesDetails.posterPath != null
+                ? "https://image.tmdb.org/t/p/w500/${moviesDetails.posterPath}"
+                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s",
+            width: 120,
+          ),
+          AddButton(),
+        ],
       ),
       const SizedBox(
         width: 20,

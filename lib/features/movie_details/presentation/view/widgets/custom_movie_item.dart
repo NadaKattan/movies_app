@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/routes/routes.dart';
+import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
 
@@ -23,19 +24,24 @@ class CustomMovieItem extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                height: MediaQuery.sizeOf(context).height * .15,
-                // width: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  image: DecorationImage(
-                    image: NetworkImage(movie.backdropPath != null
-                        ? "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
-                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s"),
-                    // image: AssetImage("assets/images/test.png"),
-                    fit: BoxFit.fill,
+              Stack(
+                children: [
+                  Container(
+                    height: MediaQuery.sizeOf(context).height * .15,
+                    // width: 50,
+                    decoration: BoxDecoration(
+                      // borderRadius: BorderRadius.all(Radius.circular(20)),
+                      image: DecorationImage(
+                        image: NetworkImage(movie.backdropPath != null
+                            ? "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
+                            : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s"),
+                        // image: AssetImage("assets/images/test.png"),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
                   ),
-                ),
+                  AddButton(),
+                ],
               ),
               MovieRating(
                 rating: "${movie.voteAverage}",

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class AddButton extends StatefulWidget {
   final void Function()? onTap;
 
-  const AddButton({required this.onTap, super.key});
+  const AddButton({this.onTap, super.key});
 
   @override
   State<AddButton> createState() => _AddButtonState();
@@ -17,33 +17,25 @@ class _AddButtonState extends State<AddButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      customBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      onTap: () => setState(() {
-        isClicked = !isClicked;
-        addIcon = !isClicked ? const Icon(Icons.add) : const Icon(Icons.check);
-        widget.onTap?.call();
-      }),
-      child: Material(
-        color:
-            !isClicked ? ColorManager.unSelectedAdd : ColorManager.selectedAdd,
-        elevation: 5,
-        // shape: const ,
-        // shadowColor: ColorManager.primary,
-        child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage(!isClicked
-                      ? ImageAssets.bookmark
-                      : ImageAssets.selectedBookmark))),
-          color: ColorManager.white,
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: addIcon,
-          ),
-        ),
-      ),
-    );
+            onTap: () {
+              setState(() {
+                isClicked = !isClicked;
+              });
+            },
+            child: Container(
+                margin: EdgeInsets.all(0),
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                // color: ColorManager.unSelectedAdd,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: isClicked
+                      ? AssetImage("assets/images/selectedBookmark.png")
+                      : AssetImage("assets/images/bookmark.png"),
+                )),
+                child: Icon(
+                  Icons.add,
+                  size: 16,
+                )),
+          );   
   }
 }
