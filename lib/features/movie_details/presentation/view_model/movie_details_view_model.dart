@@ -5,9 +5,7 @@ import 'package:movies_app/features/movie_details/data/models/movies_details_res
 import 'package:movies_app/features/movie_details/data/repositories/movie_details_repository.dart';
 import 'package:movies_app/features/movie_details/presentation/view_model/service_locator.dart';
 
-
-
-class MovieDetailsViewModel with ChangeNotifier{
+class MovieDetailsViewModel with ChangeNotifier {
   late MoviesDetailsResponse movieDetails;
   String? errorMessage;
   bool isLoading = false;
@@ -16,14 +14,13 @@ class MovieDetailsViewModel with ChangeNotifier{
     isLoading = true;
     notifyListeners();
     final repository = MovieDetailsRepository(
-      dataSource: ServiceLocator.movieDetailsDataSource
-    );
+        dataSource: ServiceLocator.movieDetailsDataSource);
 
     try {
       movieDetails = await repository.getMovieDetails(movieId);
-    }catch (error) {
+    } catch (error) {
       errorMessage = error.toString();
-      log(errorMessage??"");
+      log(errorMessage ?? "");
     }
     isLoading = false;
     notifyListeners();

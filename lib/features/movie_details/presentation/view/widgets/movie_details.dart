@@ -40,6 +40,7 @@ class MovieDetails extends StatelessWidget {
             ),
             // Text("7.7"),
             MovieRating(
+              isSmall: false,
               rating: moviesDetails.voteAverage,
             ),
           ],

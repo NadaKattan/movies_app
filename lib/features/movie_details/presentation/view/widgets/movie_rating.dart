@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 
-
 class MovieRating extends StatelessWidget {
-  MovieRating({this.mainAxisAlignment, required this.rating, super.key});
+  MovieRating(
+      {this.isSmall = true,
+      this.mainAxisAlignment,
+      required this.rating,
+      super.key});
   MainAxisAlignment? mainAxisAlignment;
+  bool isSmall;
   final rating;
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class MovieRating extends StatelessWidget {
       children: [
         Icon(
           Icons.star_rate,
-          size: 18,
+          size: isSmall ? 12 : 18,
           color: Color(0xffFFDD4F),
         ),
         const SizedBox(
@@ -22,7 +26,7 @@ class MovieRating extends StatelessWidget {
           children: [
             Text(
               "$rating",
-              style: TextStyle(fontSize: 16),
+              style: TextStyle(fontSize: isSmall ? 10 : 16),
             ),
             const SizedBox(
               width: 5,

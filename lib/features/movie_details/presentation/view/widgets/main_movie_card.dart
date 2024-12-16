@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_details.dart';
 
 class MainMovieCard extends StatelessWidget {
   const MainMovieCard({super.key, required this.movieDetails});

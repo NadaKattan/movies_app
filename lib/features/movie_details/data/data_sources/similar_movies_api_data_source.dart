@@ -2,12 +2,13 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/core/services/api_constants.dart';
-import 'package:movies_app/features/movie_details/data/data_sources/movie_details_data_source.dart';
-import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
+import 'package:movies_app/features/movie_details/data/data_sources/similar_movies_data_source.dart';
+import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
 
-class MovieDetailsAPIDataSource extends MovieDetailsDataSource {
+class SimilarMoviesAPIDataSource extends SimilarMoviesDataSource {
   @override
-  Future<MoviesDetailsResponse> getMovieDetails(String movieId) async {
+  Future<SimilarMoviesResponse> getSimilarMoviesDetails(
+      String movieId) async {
     // final uri = Uri.parse(
     //       'https://${ApiConstants.baseURL}/3/movie/$movieId?language=en-US/');
     //   final response = await http.get(
@@ -20,11 +21,12 @@ class MovieDetailsAPIDataSource extends MovieDetailsDataSource {
 
     final uri = Uri.https(
         ApiConstants.baseURL,
-        "/3/movie/$movieId",
+        "/3/movie/$movieId/similar",
         // "${ApiConstants.detailsURL}$movieId",
         {
           // 'apiKey':ApiConstants.apiKey,
-          'language': "en"
+          'language': "en-US",
+          "page": "1",
         });
     final response = await http.get(uri, headers: {
       'Authorization':
@@ -33,14 +35,15 @@ class MovieDetailsAPIDataSource extends MovieDetailsDataSource {
         //       'accept': 'application/json',
         );
     try {
-      // log("na-1");
+      log("na-1");
       final json = jsonDecode(response.body);
-      // log("na-2");
-      final MoviesDetailsResponse detailsResponse =
-          MoviesDetailsResponse.fromJson(json);
-      // log("na-3");
-      // log(detailsResponse.overview ?? "");
-      // log("${detailsResponse.voteAverage}");
+      log("na-2");
+      final SimilarMoviesResponse detailsResponse =
+          SimilarMoviesResponse.fromJson(json);
+      log("na-3");
+      log("${detailsResponse.results?.map((e) {
+        return e.title;
+      },).toList()}");
       return detailsResponse;
     } catch (e) {
       log(e.toString());
