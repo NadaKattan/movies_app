@@ -28,20 +28,10 @@ class CustomMovieItem extends StatelessWidget {
                 // width: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  image: DecorationImage(
-                    // image:
-                    //         CachedNetworkImage(
-                    //   imageUrl: news.urlToImage!,
-                    //   // ?? "https://static.vecteezy.com/system/resources/previews/004/141/669/non_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg",
-                    //   placeholder: (context, url) => const LoadingIndicator(),
-                    //   errorWidget: (context, url, error) =>
-                    //       const Icon(Icons.image_not_supported_outlined),
-                    //   width: double.infinity,
-                    //   // fit: BoxFit.cover,
-                    // ),
+                  image: DecorationImage(                    
                     image: NetworkImage(movie.backdropPath != null
-                        ? "https://image.tmdb.org/t/p/w500/${movie.backdropPath}"
-                        : "https://image.tmdb.org/t/p/w500//jYl0UuJFcmhymv9ZNO14lPLDY1Z.jpg"),
+                        ? "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
+                        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s"),
                     // image: AssetImage("assets/images/test.png"),
                     fit: BoxFit.fill,
                   ),

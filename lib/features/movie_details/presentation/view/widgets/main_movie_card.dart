@@ -17,7 +17,9 @@ class MainMovieCard extends StatelessWidget {
             image: DecorationImage(
               // image: AssetImage("assets/images/test2.png"),
               image: NetworkImage(
-                "https://image.tmdb.org/t/p/w500/${movieDetails.backdropPath}",
+                movieDetails.backdropPath != null
+                    ? "https://image.tmdb.org/t/p/w500/${movieDetails.backdropPath}"
+                    : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s",
               ),
               fit: BoxFit.fill,
             ),
