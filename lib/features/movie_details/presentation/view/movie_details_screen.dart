@@ -16,14 +16,19 @@ class MovieDetailsScreen extends StatefulWidget {
 class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    final args=ModalRoute.of(context)!.settings.arguments as String?;
+    final args = ModalRoute.of(context)!.settings.arguments as String?;
     //  ??"575264";
     return Scaffold(
       appBar: AppBar(
         // automaticallyImplyLeading: false,
-        title: Text("Dora and the lost city of gold"),
+        title: const Text(
+          "Movies App",
+          // "Mission: Impossible - Dead Reckoning Part One",
+          style: TextStyle(fontSize: 20),
+        ),
+        actions: const [Icon(Icons.search)],
       ),
-      body: MovieDetailsView(args??"575264"),
+      body: MovieDetailsView(args ?? "575264"),
     );
   }
 }

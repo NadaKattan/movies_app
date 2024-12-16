@@ -28,7 +28,7 @@ class CustomMovieItem extends StatelessWidget {
                 // width: 50,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
-                  image: DecorationImage(                    
+                  image: DecorationImage(
                     image: NetworkImage(movie.backdropPath != null
                         ? "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
                         : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s"),
