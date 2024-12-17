@@ -1,8 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/widgets/add_button.dart';
-import 'package:movies_app/core/widgets/loading_indicator.dart';
 import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
 
@@ -38,7 +36,7 @@ class MovieDetails extends StatelessWidget {
                 : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s",
             width: 120,
           ),
-          AddButton(),
+          const AddButton(),
         ],
       ),
       const SizedBox(
@@ -54,7 +52,7 @@ class MovieDetails extends StatelessWidget {
               moviesDetails.overview ?? "",
               // maxLines: 5,
               // overflow: TextOverflow.ellipsis,
-              style: TextStyle(fontSize: 13, color: ColorManager.descText),
+              style: const TextStyle(fontSize: 13, color: ColorManager.descText),
             ),
             const SizedBox(
               height: 10,

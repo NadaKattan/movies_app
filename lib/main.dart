@@ -1,12 +1,13 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/routes/route_generator.dart';
 import 'package:movies_app/core/routes/routes.dart';
 
-void main() {
+Future<void> main() async {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
             .copyWith(dragDevices: {PointerDeviceKind.mouse}),
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
-          appBarTheme: AppBarTheme(color: ColorManager.appBarBackground),
+          appBarTheme: const AppBarTheme(color: ColorManager.appBarBackground),
           scaffoldBackgroundColor: ColorManager.primary,
           // textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
         ),

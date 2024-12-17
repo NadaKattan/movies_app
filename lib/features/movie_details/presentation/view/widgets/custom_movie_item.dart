@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/routes/routes.dart';
 import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
@@ -21,6 +21,7 @@ class CustomMovieItem extends StatelessWidget {
         aspectRatio: ratio,
         child: Container(
           margin: const EdgeInsetsDirectional.only(end: 12),
+          color: ColorManager.cardBackground,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -32,7 +33,7 @@ class CustomMovieItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       // borderRadius: BorderRadius.all(Radius.circular(20)),
                       image: DecorationImage(
-                        image: NetworkImage(movie.backdropPath != null
+                        image: NetworkImage(movie.posterPath != null
                             ? "https://image.tmdb.org/t/p/w500/${movie.posterPath}"
                             : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s"),
                         // image: AssetImage("assets/images/test.png"),
@@ -40,19 +41,37 @@ class CustomMovieItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  AddButton(),
+                  const AddButton(),
                 ],
               ),
-              MovieRating(
-                rating: "${movie.voteAverage}",
+              const SizedBox(
+                height: 5,
               ),
-              Text(movie.title ?? "",
-                  style: TextStyle(
-                    fontSize: 10,
-                  )),
-              Text(
-                "2018  R  1h 59m",
-                style: TextStyle(fontSize: 8, color: Colors.grey),
+              Padding(
+                padding: const EdgeInsets.only(left: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MovieRating(
+                      rating: "${movie.voteAverage}",
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      movie.title ?? "",
+                      style: const TextStyle(
+                        fontSize: 10,
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                    const Text(
+                      "2018  R  1h 59m",
+                      style: TextStyle(fontSize: 8, color: Colors.grey),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

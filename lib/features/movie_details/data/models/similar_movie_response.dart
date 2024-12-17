@@ -11,7 +11,7 @@ class SimilarMoviesResponse {
     if (json['results'] != null) {
       results = <Results>[];
       json['results'].forEach((v) {
-        results!.add(new Results.fromJson(v));
+        results!.add(Results.fromJson(v));
       });
     }
     totalPages = json['total_pages'];
@@ -19,11 +19,11 @@ class SimilarMoviesResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['page'] = page;
 
-    data['total_pages'] = this.totalPages;
-    data['total_results'] = this.totalResults;
+    data['total_pages'] = totalPages;
+    data['total_results'] = totalResults;
     return data;
   }
 }

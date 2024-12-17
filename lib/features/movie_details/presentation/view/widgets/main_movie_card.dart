@@ -13,7 +13,7 @@ class MainMovieCard extends StatelessWidget {
           // width: double.infinity,
           margin: const EdgeInsetsDirectional.only(end: 12),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderRadius: const BorderRadius.all(Radius.circular(20)),
             image: DecorationImage(
               // image: AssetImage("assets/images/test2.png"),
               image: NetworkImage(
@@ -32,7 +32,7 @@ class MainMovieCard extends StatelessWidget {
           alignment: AlignmentDirectional.centerStart,
           child: Text(
             movieDetails.title,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
           ),
         ),
       ],

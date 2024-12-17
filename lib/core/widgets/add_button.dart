@@ -1,5 +1,3 @@
-import 'package:movies_app/core/resources/assets_manager.dart';
-import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class AddButton extends StatefulWidget {
@@ -23,16 +21,16 @@ class _AddButtonState extends State<AddButton> {
               });
             },
             child: Container(
-                margin: EdgeInsets.all(0),
-                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                margin: const EdgeInsets.all(0),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
                 // color: ColorManager.unSelectedAdd,
                 decoration: BoxDecoration(
                     image: DecorationImage(
                   image: isClicked
-                      ? AssetImage("assets/images/selectedBookmark.png")
-                      : AssetImage("assets/images/bookmark.png"),
+                      ? const AssetImage("assets/images/selectedBookmark.png")
+                      : const AssetImage("assets/images/bookmark.png"),
                 )),
-                child: Icon(
+                child: const Icon(
                   Icons.add,
                   size: 16,
                 )),

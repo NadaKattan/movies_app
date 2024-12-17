@@ -2,7 +2,7 @@ import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class LoadingIndicator extends StatelessWidget {
-  const LoadingIndicator();
+  const LoadingIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

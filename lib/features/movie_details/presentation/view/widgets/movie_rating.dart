@@ -17,7 +17,7 @@ class MovieRating extends StatelessWidget {
         Icon(
           Icons.star_rate,
           size: isSmall ? 12 : 18,
-          color: Color(0xffFFDD4F),
+          color: const Color(0xffFFDD4F),
         ),
         const SizedBox(
           width: 5,

@@ -5,7 +5,7 @@ import 'package:movies_app/features/home_screen/home_screen.dart';
 import 'package:movies_app/features/movie_details/presentation/view/movie_details_screen.dart';
 
 import 'package:movies_app/features/search/search_screen.dart';
-import 'package:movies_app/features/watch_list/watch_list_screen.dart';
+import 'package:movies_app/features/watch_list/presentation/view/watch_list_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
