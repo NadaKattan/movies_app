@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies/category/movies_list.dart';
 
 import 'home.dart';
 
@@ -13,6 +14,7 @@ class MoviesApp extends StatelessWidget{
       debugShowCheckedModeBanner: false,
       routes: {
         HomeScreen.routeName: (_) => HomeScreen(),
+        MoviesList.routeName: (_) => MoviesList(),
       },
       initialRoute: HomeScreen.routeName,
     );
