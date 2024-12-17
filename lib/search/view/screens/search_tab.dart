@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/search/view/widgets/search_text_field.dart';
 import 'package:movies/search/view_model/search_view_model.dart';
 import 'package:movies/shared/utils/validator.dart';
 import 'package:movies/shared/widgets/error_indicator.dart';
 import 'package:movies/shared/widgets/loading_indicator.dart';
 import 'package:movies/shared/widgets/movie_search_item.dart';
 import 'package:provider/provider.dart';
+
+import '../widgets/search_text_field.dart';
 
 class SearchTab extends StatefulWidget {
   const SearchTab({super.key});
@@ -19,21 +20,14 @@ class _SearchTabState extends State<SearchTab> {
   late final SearchViewModel viewModel;
 
   @override
-  void initState() {
-    super.initState();
-    // Initialize the viewModel here
-    viewModel = Provider.of<SearchViewModel>(context, listen: false);
-  }
-
-  @override
   void dispose() {
-    // Clear search movies when the widget is disposed
-    viewModel.clearSearchMovies();
     super.dispose();
+    viewModel.clearSearchMovies();
   }
 
   @override
   Widget build(BuildContext context) {
+    viewModel = Provider.of<SearchViewModel>(context, listen: false);
     final TextEditingController controller = TextEditingController();
 
     return Padding(
@@ -71,7 +65,7 @@ class _SearchTabState extends State<SearchTab> {
             },
           ),
           Expanded(
-            child: Consumer<SearchViewModel>( // Listening to changes in the viewModel
+            child: Consumer<SearchViewModel>(
               builder: (_, searchViewModel, __) {
                 if (searchViewModel.isLoading) {
                   return const LoadingIndicator();
@@ -83,17 +77,18 @@ class _SearchTabState extends State<SearchTab> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/deafaultsearch.png',
+                          'assets/images/fd56e79a492733f92951955aa0ae532f.png',
                           height: 87.h,
                           width: 78.h,
                         ),
                         SizedBox(height: 8.h),
                         Text(
                           'No movies found',
-                          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontSize: 18.sp,
-                            color: Colors.white.withOpacity(0.8),
-                          ),
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    fontSize: 18.sp,
+                                    color: Colors.white.withOpacity(0.8),
+                                  ),
                         ),
                       ],
                     ),
@@ -108,15 +103,14 @@ class _SearchTabState extends State<SearchTab> {
                   itemBuilder: (context, index) {
                     final movie = searchViewModel.movies[index];
                     return InkWell(
-                      onTap: () {
-                        print('Navigator to details screen');
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                            top: 20.h, left: 5.w, bottom: 17.h),
-                        child: MovieSearchItem(movie: movie),
-                      ),
-                    );
+                        onTap: () {
+                          print('Navigator to detailes screen');
+                        },
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                              top: 20.h, left: 5.w, bottom: 17.h),
+                          child: MovieSearchItem(movie: movie),
+                        ));
                   },
                 );
               },

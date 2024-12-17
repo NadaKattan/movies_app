@@ -4,6 +4,8 @@ class APIConstants {
   static const String newReleaseEndpoint = '/3/movie/upcoming';
   static const String recommendedEndpoint = '/3/movie/top_rated';
   static const String moviesListEndpoint = '/3/discover/movie';
+  static const String searchEndPoint = '/3/search/movie';
+  static const String imageBaseUrl = 'https://image.tmdb.org/t/p/original';
   static const String apiKey = '17e5c52b41ed419148fd6ed0129089d6';
   static const String accessToken = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxN2U1YzUyYjQxZWQ0MTkxNDhmZDZlZDAxMjkwODlkNiIsIm5iZiI6MTczMzkyNzExNi42MDMwMDAyLCJzdWIiOiI2NzU5YTBjYzZjNTM1ODg2ZWUyZjVlNWIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.XzEujtd_8bEhMbbh1DeDn12Cf4GdpypYl5Li1IXSO6g';
 }
