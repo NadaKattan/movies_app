@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
+import 'package:movies_app/features/movie_details/presentation/view/widgets/genre.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
 
 class MovieDetails extends StatelessWidget {
@@ -48,11 +49,27 @@ class MovieDetails extends StatelessWidget {
           children: [
             // Text("${movieDetailsOverview}"),
             // Text("${movieDetailsVote}"),
+            SizedBox(
+              height: 30,
+              child: ListView.separated(
+                separatorBuilder: (context, index) => const SizedBox(
+                  width: 10,
+                ),
+                scrollDirection: Axis.horizontal,
+                itemCount: moviesDetails.genres?.length ?? 0,
+                itemBuilder: (context, index) =>
+                    Genre(genre: moviesDetails.genres?[index].name),
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
             Text(
               moviesDetails.overview ?? "",
               // maxLines: 5,
               // overflow: TextOverflow.ellipsis,
-              style: const TextStyle(fontSize: 13, color: ColorManager.descText),
+              style:
+                  const TextStyle(fontSize: 13, color: ColorManager.descText),
             ),
             const SizedBox(
               height: 10,

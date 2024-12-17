@@ -18,10 +18,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         // automaticallyImplyLeading: false,
         title: const Text(
           "Movies App",
-          // "Mission: Impossible - Dead Reckoning Part One",
           style: TextStyle(fontSize: 20),
         ),
-        actions: const [Icon(Icons.search)],
       ),
       body: MovieDetailsView(args ?? "575264"),
     );

@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/routes/routes.dart';
 import 'package:movies_app/core/widgets/add_button.dart';
-import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
 
 class CustomMovieItem extends StatelessWidget {
   CustomMovieItem({required this.movie, required this.ratio, super.key});
-  final Results movie;
+  final movie;
   double ratio;
   @override
   Widget build(BuildContext context) {
@@ -66,9 +65,12 @@ class CustomMovieItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
                     ),
-                    const Text(
-                      "2018  R  1h 59m",
-                      style: TextStyle(fontSize: 8, color: Colors.grey),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      "${movie.releaseDate}",
+                      style: const TextStyle(fontSize: 8, color: Colors.grey),
                     ),
                   ],
                 ),
