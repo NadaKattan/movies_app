@@ -1,65 +1,55 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/movie_items/recommended_item.dart';
+import '../../api/api_services.dart';
 
-class Recomended extends StatelessWidget{
-  List<RecommendedItem> movies = List.generate(15, (index) => RecommendedItem());
-
+class Recomended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;  // Corrected MediaQuery usage
+    var width = MediaQuery.of(context).size.width;
+
     return Container(
-        width: double.infinity,
-        height: 246,
-        color: Color(0xF0707070).withOpacity(0.2),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 8),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Recomended', style: TextStyle(fontSize: 15, color: Colors.white),),
-              SizedBox(height: 6,),
-              Expanded(
-                child: ListView.builder(
-                    itemBuilder: buildMovie,
-                    itemCount: movies.length,
-                    scrollDirection: Axis.horizontal),
-              ),
-            ],
-          ),
-        ));
-  }
-  Widget buildMovie(BuildContext context, int index){
-    return Card(
-      color: Color(0xF0343534).withOpacity(1),
+      width: width ,
+      height: height * 0.29,
+      color: Color(0x70707070).withOpacity(0.2),  // Fixed the alpha value
+      child: Padding(
+        padding: const EdgeInsets.only(left: 8, right: 8, top: 16, bottom: 8),
         child: Column(
-              children: [
-                RecommendedItem(),
-        Container(
-          color: Color(0xF0343534).withOpacity(1),
-          //margin: EdgeInsets.only(top: 127),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Icon(Icons.star,color: Color(0xFFFFA90A),size: 20,),
-                  Text('7.7',style: TextStyle(color: Colors.white),),
-                ],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Recommended',
+              style: TextStyle(fontSize: 15, color: Colors.white),
+            ),
+            SizedBox(height: 6),
+            // FutureBuilder for fetching the recommended list
+            Expanded(
+              child: FutureBuilder(
+                future: APIServices.getRecommended(),
+                builder: (context, snapshot) {
+                  // Handle different states of FutureBuilder
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());  // Show loading spinner
+                  }
+
+                  if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));  // Show error message
+                  }
+
+                  // Safely handle null and empty data
+                  final recommendedList = snapshot.data?.results ?? [];
+                  return ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (_, index) => Card(child: RecommendedItem(recommendedList[index])),
+                    itemCount: recommendedList.length,
+                  );
+                },
               ),
-              Text('Movie Name',style: TextStyle(color: Colors.white),),
-              Row(
-                children: [
-                  Text('2018',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 8), ),
-                  SizedBox(width: 4,),
-                  Text('R',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 8),),
-                  SizedBox(width: 4,),
-                  Text('1h',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 8),),
-                ],
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-              ],
-            ));
+      ),
+    );
   }
 }

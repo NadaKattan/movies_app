@@ -11,9 +11,9 @@ class HomeTab extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Popular(),
-        SizedBox(height: 20,),
+        SizedBox(height: 10,),
         NewReleases(),
-        SizedBox(height: 20,),
+        SizedBox(height: 15,),
         Recomended(),
       ]);
   }

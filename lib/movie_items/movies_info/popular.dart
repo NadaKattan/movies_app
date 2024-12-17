@@ -1,58 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:movies/movie_items/popular_item.dart';
+import '../../api/api_services.dart';
 
-class Popular extends StatelessWidget{
+class Popular extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.sizeOf(context).height;
-    var width = MediaQuery.sizeOf(context).width;
+    var height = MediaQuery.of(context).size.height;  // Fixed this line
+    var width = MediaQuery.of(context).size.width;    // Fixed this line
+
     return Container(
       height: height * 0.4,
-      width: double.infinity,
-      //color: Colors.brown,
-      child: Stack(
-        children: [
-          Container(
-            margin: EdgeInsets.only(top: 20),
-            child: Image.asset(
-                'assets/images/poster.jpg',
-              width: double.infinity,
-              height: height * 0.3,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 175, left: 20),
-            width: width * 0.3,
-            height: double.infinity,
-            child: FittedBox(
-              fit: BoxFit.fill,
-                child: PopularItem()),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 330, left: 10),
-            child: Column(
-              children: [
-                Text('Movie Name',style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14),),
-                SizedBox(height: 10,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('2018',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 10), ),
-                    SizedBox(width: 20,),
-                    Text('R',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 10),),
-                    SizedBox(width: 20,),
-                    Text('1h',style: TextStyle(color: Color(0xFFB5B4B4), fontSize: 10),),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          Center(child: Icon(CupertinoIcons.play_circle_fill, color: Colors.white,size: 90,)),
-        ],
+      width: width ,  // Adjusting width to the whole screen width
+      child: Container(
+        color: Color(0xFF1E1E1E),
+        //margin: EdgeInsets.only(top: 75, left: 20),
+        width: width * 0.9,  // Adjusted width
+        height: height * 0.3,  // Adjusted height
+        child: FutureBuilder(
+          future: APIServices.getPopular(),
+          builder: (context, snapshot) {
+            // Check for loading, error, or data state
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasError) {
+              return Center(child: Text("Error: ${snapshot.error}"));
+            }
+            if (!snapshot.hasData || snapshot.data?.results == null) {
+              return Center(child: Text("No data available"));
+            }
+
+            final popularList = snapshot.data?.results ?? [];
+            return ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (_, index) => PopularItem(popularList[index]),
+              itemCount: popularList.length,
+            );
+          },
+        ),
       ),
     );
   }
-
 }
