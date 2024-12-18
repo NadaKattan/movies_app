@@ -1,6 +1,7 @@
-import 'package:movies_app/core/resources/assets_manager.dart';
-import 'package:movies_app/core/resources/color_manager.dart';
+
 import 'package:flutter/material.dart';
+import 'package:movies/core/resources/assets_manager.dart';
+import 'package:movies/core/resources/color_manager.dart';
 
 class AddButton extends StatefulWidget {
   final void Function()? onTap;

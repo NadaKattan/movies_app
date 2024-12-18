@@ -5,5 +5,4 @@ class BookmarkTab extends StatelessWidget{
   Widget build(BuildContext context) {
     return Center(child: Text('bookmark'),);
   }
-
 }
