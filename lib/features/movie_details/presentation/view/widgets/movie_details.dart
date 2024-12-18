@@ -4,6 +4,7 @@ import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/genre.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
+import 'package:movies_app/features/watch_list/data/models/watch_list_movie_model.dart';
 
 class MovieDetails extends StatelessWidget {
   const MovieDetails(
@@ -37,7 +38,7 @@ class MovieDetails extends StatelessWidget {
                 : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5edgCipIZyA6SePOcnA-ZEWaAVv0wwLnvUw&s",
             width: 120,
           ),
-          const AddButton(),
+           AddButton(movie: moviesDetails,),
         ],
       ),
       const SizedBox(

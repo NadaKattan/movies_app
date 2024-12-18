@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/routes/routes.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_details_view.dart';
 
 class MovieDetailsScreen extends StatefulWidget {
@@ -20,6 +21,13 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           "Movies App",
           style: TextStyle(fontSize: 20),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.watchList);
+              },
+              icon: Icon(Icons.watch))
+        ],
       ),
       body: MovieDetailsView(args ?? "575264"),
     );

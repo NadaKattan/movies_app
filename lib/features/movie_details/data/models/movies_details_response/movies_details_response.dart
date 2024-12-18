@@ -28,6 +28,9 @@ library;
 
 class MoviesDetailsResponse {
   MoviesDetailsResponse({
+    this.movieId,
+    this.isSelected,
+    this.genreIds,
     this.adult,
     this.backdropPath,
     this.belongsToCollection,
@@ -57,6 +60,10 @@ class MoviesDetailsResponse {
   });
 
   MoviesDetailsResponse.fromJson(dynamic json) {
+    isSelected = json['isSelected'];
+    if (genreIds != null) genreIds = json['genre_ids'].cast<int>();
+    movieId = json['movieId'];
+
     adult = json['adult'];
     backdropPath = json['backdrop_path'];
     belongsToCollection = json['belongs_to_collection'];
@@ -112,7 +119,10 @@ class MoviesDetailsResponse {
   int? budget;
   List<Genres>? genres;
   String? homepage;
-  int? id;
+  
+  var id;
+  var movieId;
+
   String? imdbId;
   List<String>? originCountry;
   String? originalLanguage;
@@ -133,12 +143,20 @@ class MoviesDetailsResponse {
   double? voteAverage;
   int? voteCount;
 
+  bool? isSelected;
+  List<int>? genreIds;
+  // String? movieId;
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['adult'] = adult;
     map['backdrop_path'] = backdropPath;
     map['belongs_to_collection'] = belongsToCollection;
     map['budget'] = budget;
+    map["isSelected"] = isSelected;
+    map["genreIds"] = genreIds;
+    map["movieId"] = movieId;
+
     if (genres != null) {
       map['genres'] = genres?.map((v) => v.toJson()).toList();
     }

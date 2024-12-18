@@ -3,6 +3,7 @@ import 'package:movies_app/core/resources/color_manager.dart';
 import 'package:movies_app/core/routes/routes.dart';
 import 'package:movies_app/core/widgets/add_button.dart';
 import 'package:movies_app/features/movie_details/presentation/view/widgets/movie_rating.dart';
+import 'package:movies_app/features/watch_list/data/models/watch_list_movie_model.dart';
 
 class CustomMovieItem extends StatelessWidget {
   CustomMovieItem({required this.movie, required this.ratio, super.key});
@@ -40,7 +41,7 @@ class CustomMovieItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const AddButton(),
+                  AddButton(movie: movie,),
                 ],
               ),
               const SizedBox(
