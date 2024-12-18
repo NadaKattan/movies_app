@@ -30,8 +30,6 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, __) => MaterialApp(
-        scrollBehavior: const MaterialScrollBehavior()
-            .copyWith(dragDevices: {PointerDeviceKind.mouse}),
         debugShowCheckedModeBanner: false,
         theme: ThemeData.dark().copyWith(
           appBarTheme: AppBarTheme(color: ColorManager.appBarBackground),

@@ -52,7 +52,7 @@ class _MovieItemState extends State<MovieItem> {
             // Bookmark icon (positioned)
             ClipRRect(
               borderRadius: BorderRadius.circular(4),
-              child: AddButton(),
+              child: AddButton(movie: widget.release,),
               ),
           ],
         ),

@@ -22,13 +22,6 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
           "Movies App",
           style: TextStyle(fontSize: 20),
         ),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(Routes.watchList);
-              },
-              icon: const Icon(Icons.watch))
-        ],
       ),
       body: MovieDetailsView(args ?? "575264"),
     );

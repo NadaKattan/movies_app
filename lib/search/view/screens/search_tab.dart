@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movies/core/routes/routes.dart';
 import 'package:movies/search/view_model/search_view_model.dart';
 import 'package:movies/shared/utils/validator.dart';
 import 'package:movies/shared/widgets/error_indicator.dart';
@@ -103,8 +104,9 @@ class _SearchTabState extends State<SearchTab> {
                   itemBuilder: (context, index) {
                     final movie = searchViewModel.movies[index];
                     return InkWell(
-                        onTap: () {
-                          print('Navigator to detailes screen');
+                        onTap: ()  {
+                            Navigator.of(context)
+                                .pushNamed(Routes.movieDetails, arguments: "${movie.id}");
                         },
                         child: Padding(
                           padding: EdgeInsets.only(

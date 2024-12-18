@@ -34,10 +34,13 @@ class _AddButtonState extends State<AddButton> {
           decoration: BoxDecoration(
               image: DecorationImage(
                 image: isClicked
-                    ? const AssetImage("assets/images/addedbookmark.png")
+                    ? const AssetImage("assets/images/selectedBookmark.png")
                     : const AssetImage("assets/images/bookmark.png"),
               )),
-          child: const Icon(
+          child: isClicked? const Icon(
+            Icons.check,
+            size: 16,
+          ):const Icon(
             Icons.add,
             size: 16,
           )),
