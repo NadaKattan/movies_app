@@ -10,11 +10,13 @@ class WatchListMovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      overlayColor: const WidgetStatePropertyAll(Colors.transparent),
       onTap: () {
         Navigator.of(context)
             .pushNamed(Routes.movieDetails, arguments: "${movie.id}");
       },
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: 100,
@@ -39,13 +41,27 @@ class WatchListMovieCard extends StatelessWidget {
               children: [
                 Text(
                   movie.title ?? "",
-                  style: TextStyle(fontSize: 15),
+                  style: const TextStyle(fontSize: 15),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  movie.releaseDate ?? "",
+                  style:
+                      const TextStyle(fontSize: 13, color: ColorManager.grey),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 3,
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Text(
                   movie.overview ?? "",
-                  style: TextStyle(fontSize: 13, color: ColorManager.descText),
+                  style:
+                      const TextStyle(fontSize: 13, color: ColorManager.grey),
                   overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
+                  maxLines: 2,
                 ),
               ],
             ),

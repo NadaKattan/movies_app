@@ -62,8 +62,18 @@ class WatchListTab extends StatelessWidget {
                   }
                   return ListView.separated(
                     shrinkWrap: true,
-                    separatorBuilder: (context, index) => const Divider(
-                      height: 10,
+                    separatorBuilder: (context, index) => const Column(
+                      children: [
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Divider(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
                     ),
                     itemBuilder: (context, index) {
                       return WatchListMovieCard(
