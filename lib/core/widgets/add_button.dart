@@ -1,13 +1,11 @@
-
 import 'package:flutter/material.dart';
-import 'package:movies/core/resources/assets_manager.dart';
-import 'package:movies/core/resources/color_manager.dart';
+import 'package:movies/features/watch_list/data/data_sources/firebase_functions.dart';
 
 class AddButton extends StatefulWidget {
   final void Function()? onTap;
 
-  const AddButton({ this.onTap, super.key, required movie});
-
+  const AddButton({this.movie, this.onTap, super.key});
+  final movie;
   @override
   State<AddButton> createState() => _AddButtonState();
 }
@@ -18,34 +16,31 @@ class _AddButtonState extends State<AddButton> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      customBorder: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(16),
-      ),
-      onTap: () => setState(() {
-        isClicked = !isClicked;
-        addIcon = !isClicked ? const Icon(Icons.add) : const Icon(Icons.check);
-        widget.onTap?.call();
-      }),
-      child: Material(
-        color:
-            !isClicked ? ColorManager.unSelectedAdd : ColorManager.selectedAdd,
-        elevation: 5,
-        // shape: const ,
-        // shadowColor: ColorManager.primary,
-        child: Container(
+      onTap: () {
+        setState(() {
+          isClicked = !isClicked;
+          if (isClicked) {
+            FirebaseFunctions.addMovieToFirestore(widget.movie);
+          } else {
+            FirebaseFunctions.deleteMovieFromFirestore(
+                widget.movie.movieId as String?);
+          }
+        });
+      },
+      child: Container(
+          margin: const EdgeInsets.all(0),
+          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+          // color: ColorManager.unSelectedAdd,
           decoration: BoxDecoration(
-            color: ColorManager.white,
               image: DecorationImage(
-                  image: AssetImage(!isClicked
-                      ? ImageAssets.bookmark
-                      : ImageAssets.selectedBookmark))),
-          
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: addIcon,
-          ),
-        ),
-      ),
+                image: isClicked
+                    ? const AssetImage("assets/images/addedbookmark.png")
+                    : const AssetImage("assets/images/bookmark.png"),
+              )),
+          child: const Icon(
+            Icons.add,
+            size: 16,
+          )),
     );
   }
 }

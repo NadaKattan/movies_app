@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/api/responses/movies_list_response.dart';
+import 'package:movies/category/movies_list.dart';
 import '../category/category_item.dart';
 import '../category/category_model.dart';
-import 'package:movies/category/movies_list.dart';
 
 class BrowseTab extends StatefulWidget {
   @override

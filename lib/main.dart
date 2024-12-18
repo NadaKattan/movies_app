@@ -4,10 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movies/core/resources/color_manager.dart';
 import 'package:movies/core/routes/route_generator.dart';
 import 'package:movies/core/routes/routes.dart';
 import 'package:movies/firebase_options.dart';
+
+import 'core/resources/color_manager.dart';
+
 
 
 Future<void> main() async {
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
           // textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
         ),
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.movieDetails,
+        initialRoute: Routes.home,
       ),
     );
   }

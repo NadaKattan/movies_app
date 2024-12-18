@@ -1,20 +1,24 @@
 
 import 'package:flutter/material.dart';
+import 'package:movies/category/movies_list.dart';
 import 'package:movies/core/routes/routes.dart';
-import 'package:movies/features/browse/browse_screen.dart';
-import 'package:movies/features/home_screen/home_screen.dart';
 import 'package:movies/features/movie_details/presentation/view/movie_details_screen.dart';
-import 'package:movies/features/search/search_screen.dart';
 import 'package:movies/features/watch_list/presentation/view/watch_list_screen.dart';
+import 'package:movies/home.dart';
+import 'package:movies/search/view/screens/search_tab.dart';
+import 'package:movies/tabs/browse_tab.dart';
 
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.search:
-        return MaterialPageRoute(builder: (_) => const SearchScreen());
+        return MaterialPageRoute(builder: (_) => const SearchTab());
+      case Routes.moviesList:
+        return MaterialPageRoute(builder: (_) => MoviesList(),
+          settings: settings,);
       case Routes.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       case Routes.watchList:
         return MaterialPageRoute(
           builder: (_) => const WatchListScreen(),
@@ -27,7 +31,7 @@ class RouteGenerator {
         );
       case Routes.browse:
         return MaterialPageRoute(
-          builder: (_) => const BrowseScreen(),
+          builder: (_) => BrowseTab(),
           settings: settings,
         );
       default:

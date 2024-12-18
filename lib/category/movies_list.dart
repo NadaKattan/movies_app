@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:movies/api/responses/movies_list_response.dart';
-import 'package:movies/category/category_model.dart';
-import 'package:movies/movie_items/movies_list_%20item.dart';
 import '../api/api_services.dart';
+import '../movie_items/movies_list_ item.dart';
+import 'category_model.dart';
 
 class MoviesList extends StatelessWidget {
   static const String routeName = "/movieslist";

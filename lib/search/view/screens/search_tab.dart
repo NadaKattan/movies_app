@@ -17,7 +17,7 @@ class SearchTab extends StatefulWidget {
 }
 
 class _SearchTabState extends State<SearchTab> {
-  late final SearchViewModel viewModel;
+   late final SearchViewModel viewModel;
 
   @override
   void dispose() {
@@ -77,7 +77,7 @@ class _SearchTabState extends State<SearchTab> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/images/fd56e79a492733f92951955aa0ae532f.png',
+                          'assets/images/deafaultsearch.png',
                           height: 87.h,
                           width: 78.h,
                         ),

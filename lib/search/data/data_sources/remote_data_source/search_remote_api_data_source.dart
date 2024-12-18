@@ -3,8 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:movies/api/api_constants.dart';
 import 'package:movies/search/data/data_sources/remote_data_source/search_remote_data_sources.dart';
-import 'package:movies/search/data/models/movie_model.dart';
-
+import '../../models/movie_model.dart';
 import '../../models/search_model_response.dart';
 
 

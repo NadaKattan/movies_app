@@ -8,6 +8,7 @@ import 'package:movies/api/responses/new_release_response.dart';
 import 'package:movies/api/responses/popular_response.dart';
 import 'package:movies/api/responses/recommended_response.dart';
 
+
 class APIServices {
   // Helper method for handling HTTP GET requests and response parsing
   static Future<T> _getData<T>(String endpoint, String apiKey, {Map<String, String>? additionalHeaders, Map<String, String>? queryParameters}) async {

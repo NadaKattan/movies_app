@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:movies/search/view/screens/search_tab.dart';
 import 'package:movies/search/view_model/search_view_model.dart';
 import 'package:movies/tabs/bookmark_tab.dart';
 import 'package:movies/tabs/browse_tab.dart';
 import 'package:movies/tabs/home_tab.dart';
-import 'package:movies/tabs/search_tab.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -43,7 +43,7 @@ class MovieSearchItem extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .titleMedium
-                    ?.copyWith(fontSize: 15.sp),
+                    ?.copyWith(fontSize: 15.sp, color: Colors.grey),
               ),
               Text(
                 extractYear(movie.releaseDate) ?? '',
