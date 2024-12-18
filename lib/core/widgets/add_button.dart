@@ -34,11 +34,12 @@ class _AddButtonState extends State<AddButton> {
         // shadowColor: ColorManager.primary,
         child: Container(
           decoration: BoxDecoration(
+            color: ColorManager.white,
               image: DecorationImage(
                   image: AssetImage(!isClicked
                       ? ImageAssets.bookmark
                       : ImageAssets.selectedBookmark))),
-          color: ColorManager.white,
+          
           child: Padding(
             padding: const EdgeInsets.all(6),
             child: addIcon,
