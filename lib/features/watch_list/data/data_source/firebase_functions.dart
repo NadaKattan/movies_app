@@ -1,8 +1,6 @@
-import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:movies_app/features/movie_details/data/models/movies_details_response/movies_details_response.dart';
-import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
 
 
 class FirebaseFunctions {

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/features/movie_details/data/models/similar_movie_response.dart';
 import 'package:movies_app/features/watch_list/data/data_source/firebase_functions.dart';
-import 'package:movies_app/features/watch_list/data/models/watch_list_movie_model.dart';
 
 class AddButton extends StatefulWidget {
   final void Function()? onTap;

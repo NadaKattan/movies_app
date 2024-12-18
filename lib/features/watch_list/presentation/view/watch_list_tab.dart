@@ -10,24 +10,24 @@ class WatchListTab extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
-        padding: EdgeInsetsDirectional.all(10),
+        padding: const EdgeInsetsDirectional.all(10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, top: 50, bottom: 20),
+            const Padding(
+              padding: EdgeInsets.only(left: 16, top: 50, bottom: 20),
               child: Text(
                 "Watchlist",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400,color: Colors.white),
               ),
             ),
-            Container(
+            SizedBox(
               height: 700,
               child: StreamBuilder(
                 stream: FirebaseFunctions.getWatchlistMovies(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                         child: CircularProgressIndicator(
                           color: Colors.yellow,
                         ));
@@ -36,9 +36,9 @@ class WatchListTab extends StatelessWidget {
                     return Center(
                       child: Column(
                         children: [
-                          Text("Something went wrong"),
+                          const Text("Something went wrong"),
                           ElevatedButton(
-                              onPressed: () {}, child: Text('try again'))
+                              onPressed: () {}, child: const Text('try again'))
                         ],
                       ),
                     );
@@ -58,7 +58,7 @@ class WatchListTab extends StatelessWidget {
                   }
                   return ListView.separated(
                     shrinkWrap: true,
-                    separatorBuilder: (context, index) => Divider(height: 10,),
+                    separatorBuilder: (context, index) => const Divider(height: 10,),
                     itemBuilder: (context, index) {
                       return WatchListMovieCard(
                         movie: watchlistMovies[index],

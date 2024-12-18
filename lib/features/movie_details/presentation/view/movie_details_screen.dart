@@ -26,7 +26,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
               onPressed: () {
                 Navigator.of(context).pushNamed(Routes.watchList);
               },
-              icon: Icon(Icons.watch))
+              icon: const Icon(Icons.watch))
         ],
       ),
       body: MovieDetailsView(args ?? "575264"),
