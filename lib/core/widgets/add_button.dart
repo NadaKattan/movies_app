@@ -6,7 +6,7 @@ import 'package:movies/core/resources/color_manager.dart';
 class AddButton extends StatefulWidget {
   final void Function()? onTap;
 
-  const AddButton({required this.onTap, super.key});
+  const AddButton({ this.onTap, super.key, required movie});
 
   @override
   State<AddButton> createState() => _AddButtonState();
